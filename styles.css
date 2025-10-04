@@ -1,0 +1,134 @@
+:root {
+  --sidebar-bg-color: #2c3e50;
+  --sidebar-text-color: #ecf0f1;
+  --sidebar-hover-color: #3498db;
+  --sidebar-accent-color: #e74c3c;
+}
+
+header {
+  position: relative;
+  z-index: 10; /* Ensure it's above the sidebar */
+}
+
+body {
+  font-family: "PT Sans", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto Slab";
+}
+
+/* Adjust the main content area for sidebar toggle */
+main {
+  padding: 20px; /* Adds padding to the main content */
+}
+
+#content-wrapper {
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0); /* Default position */
+  margin-right: 40%;
+  margin-left: 5%;
+}
+
+#content-wrapper.sidebar-open {
+  transform: translateX(
+    150px
+  ); /* Move content to the right when sidebar opens */
+}
+
+#canvas-container {
+  position: relative;
+  width: 100%;
+  height: auto; /* Height will be determined by the aspect ratio */
+  background-color: black;
+
+  /* Maintain a 16:9 aspect ratio */
+  aspect-ratio: 16 / 9;
+
+  /* Ensure it's always at the top */
+  margin: 0;
+  top: 20px;
+  left: 0px;
+}
+
+.edu-container {
+  display: flex;
+  align-items: center; /* Aligns OSU logo and text vertically */
+}
+
+p {
+  font-size: 18px;
+}
+
+#writeup {
+  padding-left: 0px;
+}
+
+#writeup .caption {
+  font-size: 14px; /* Smaller font for captions */
+  color: #7f8c8d; /* Subtle text color */
+  font-style: italic; /* Optional: Adds a styled, professional touch */
+}
+
+#writeup img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates 2 equal columns */
+  gap: 50px; /* Adjust spacing between images */
+  justify-content: center;
+  max-width: 1000px; /* Optional: Set a max width */
+}
+
+.image-grid img {
+  width: 100%; /* Ensures images take up full cell width */
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px; /* Optional: Adds rounded corners */
+}
+
+#video {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.github a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Safari-specific fix: Completely hides the native marker */
+@supports (-webkit-appearance: none) {
+  #sidebar summary {
+    list-style: none; /* Safari applies a list style for default arrows */
+  }
+
+  #sidebar summary::marker {
+    display: none; /* Remove default browser arrow */
+  }
+
+  #sidebar summary::-webkit-details-marker {
+    display: none; /* Explicitly hides Safari's native arrow */
+  }
+
+  #sidebar summary:after {
+    content: "▼"; /* Your custom arrow */
+    font-size: 12px;
+    margin-left: 10%;
+    transition: transform 0.3s ease;
+  }
+
+  /* Rotates the custom arrow when the <details> is open */
+  #sidebar details[open] summary:after {
+    transform: rotate(180deg);
+  }
+}
