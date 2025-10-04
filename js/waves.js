@@ -331,7 +331,7 @@ async function initWebGL() {
   );
 
   // Read the 3D noise texture
-  const noiseTextureData = await readTexture3D("../src/noise3d.064.tex");
+  const noiseTextureData = await readTexture3D("src/noise3d.064.tex");
   if (!noiseTextureData) {
     console.error("Failed to load 3D noise texture");
     return;
